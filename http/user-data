@@ -1,0 +1,14 @@
+#cloud-config
+autoinstall:
+  version: 1
+  # Need this or packer will try to
+  # ssh in before it is ready
+  early-commands:
+    - systemctl stop ssh 
+  ssh:
+    install-server: true
+    authorized-keys:
+      # Place public key here
+      # - ssh-rsa AAAA...
+  user-data:
+    disable_root: false
